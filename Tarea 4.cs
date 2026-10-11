@@ -9,4 +9,26 @@ check (VALUE <> '' AND LENGTH (TRIM(VALUE)) > 0);
 >saldo_cuenta
 >limite_credito
 >monto_retiro
+
+CORRECCIÓN: Pude ver que a diferencia de mi demo, la correccion del profesor indica que el dominio monto_financiero 
+impactará positivamente y reemplazará al tipo nativo en al menos estas 3 columnas 
+decisivas de nuestra arquitectura bancaria: 
+
+La columna saldo_actual dentro de la tabla Cuentas.
+La columna limite_credito dentro de la tabla Cuentas.
+La columna monto_tx dentro de la tabla Transacciones.
+
+-- Declaración del Dominio para blindaje monetario universal
+CREATE DOMAIN monto_financiero AS NUMERIC(15, 2)
+    CHECK (VALUE >= 0.00);
+
+-- Declaración del Dominio para textos que repelen espacios en blanco o cadenas vacías ilegales
+CREATE DOMAIN texto_obligatorio AS VARCHAR(100)
+    CHECK (VALUE <> '' AND LENGTH(TRIM(VALUE)) > 0);
+2. Identificación Transversal en Columnas
+El Dominio monto_financiero impactará positivamente y reemplazará al tipo nativo en al menos estas 3 columnas decisivas de nuestra arquitectura bancaria:
+
+La columna saldo_actual dentro de la tabla Cuentas.
+La columna limite_credito dentro de la tabla Cuentas.
+La columna monto_tx dentro de la tabla Transacciones.
  * 
